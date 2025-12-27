@@ -1,16 +1,122 @@
-# React + Vite
+# Dashboard Frontend (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend Dashboard desarrollado con **React** que consume una API REST de gestión de usuarios.
+Este proyecto forma parte de un flujo Full Stack, donde el frontend se comunica con un backend
+que maneja autenticación JWT, roles y permisos.
 
-Currently, two official plugins are available:
+El objetivo principal es practicar React en un escenario real, con login, rutas protegidas
+y vistas diferenciadas por rol.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Tecnologías utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- React Router DOM
+- Axios
+- JavaScript
+- Git / GitHub
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📌 Funcionalidades
+
+- Login de usuarios con JWT
+- Almacenamiento del token en el navegador
+- Rutas protegidas
+- Dashboard principal
+- Vista de perfil del usuario autenticado
+- Vista de administración (solo ADMIN)
+- Listado de usuarios con paginación y búsqueda
+- Logout de sesión
+
+---
+
+## 📂 Estructura del proyecto
+
+```
+src/
+ ├── components/
+ │   ├── layout/
+ │   └── ui/
+ ├── pages/
+ │   ├── Login.jsx
+ │   ├── Dashboard.jsx
+ │   ├── Profile.jsx
+ │   └── AdminUsers.jsx
+ ├── routes/
+ ├── services/
+ ├── hooks/
+ ├── utils/
+ ├── App.jsx
+ └── main.jsx
+```
+
+La estructura está organizada por responsabilidades para facilitar el mantenimiento
+y el crecimiento del proyecto.
+
+---
+
+## ⚙️ Configuración del entorno
+
+Antes de iniciar, asegúrate de tener el backend corriendo.
+
+El backend debe estar disponible en:
+
+```
+http://localhost:3000
+```
+
+(Si el backend usa otro puerto o dominio, se debe actualizar en `src/services/api.js`)
+
+---
+
+## ▶️ Ejecutar el proyecto
+
+Instalar dependencias:
+
+```
+npm install
+```
+
+Ejecutar en modo desarrollo:
+
+```
+npm run dev
+```
+
+La aplicación se abrirá normalmente en:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🔐 Flujo de autenticación
+
+1. El usuario inicia sesión desde `/login`
+2. El backend devuelve un token JWT
+3. El token se guarda en el navegador
+4. Las rutas protegidas verifican la sesión
+5. Según el rol, se habilitan o no vistas de administración
+
+---
+
+## 🧠 Notas finales
+
+Este proyecto fue desarrollado con fines educativos y de portafolio,
+siguiendo buenas prácticas de React y separación de responsabilidades.
+
+Sirve como base para futuras mejoras como:
+- Context API para autenticación global
+- Manejo avanzado de sesiones
+- Mejoras de UI/UX
+
+---
+
+## 👤 Autor
+
+Joseph Méndez Manzanares  
+Desarrollador Web / Full Stack Junior
