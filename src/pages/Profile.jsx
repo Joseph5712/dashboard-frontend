@@ -1,9 +1,9 @@
-// src/pages/Dashboard.jsx
+// src/pages/Profile.jsx
 import { useEffect, useState } from "react";
 import { getMe } from "../services/users.service";
 import AppLayout from "../components/layout/AppLayout";
 
-export default function Dashboard() {
+export default function Profile() {
     const [me, setMe] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -15,7 +15,7 @@ export default function Dashboard() {
                 const user = await getMe();
                 setMe(user);
             } catch (err) {
-                setError("Could not load profile. Please login again.");
+                setError("Could not load profile.");
             } finally {
                 setLoading(false);
             }
@@ -24,14 +24,28 @@ export default function Dashboard() {
         loadMe();
     }, []);
 
+    // Mientras carga, mostramos algo simple
     if (loading) return <p style={{ padding: 20 }}>Loading...</p>;
     if (error) return <p style={{ padding: 20, color: "crimson" }}>{error}</p>;
 
     return (
         <AppLayout user={me}>
-            <h2>Home</h2>
-            <p>Welcome back, <b>{me.name}</b>.</p>
-            <p>Your role is: <b>{me.role}</b></p>
+            <h2>Profile</h2>
+
+            <div style={{ marginTop: 12 }}>
+                <p>
+                    <b>Name:</b> {me.name}
+                </p>
+                <p>
+                    <b>Email:</b> {me.email}
+                </p>
+                <p>
+                    <b>Role:</b> {me.role}
+                </p>
+                <p>
+                    <b>Created:</b> {new Date(me.createdAt).toLocaleString()}
+                </p>
+            </div>
         </AppLayout>
     );
 }

@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import { isAuthenticated } from "../utils/auth";
+import Profile from "../pages/Profile";
+import AdminUsers from "../pages/AdminUsers";
+
 
 function PrivateRoute({ children }) {
     // Si no hay token, manda a /login
@@ -25,6 +28,23 @@ export default function AppRoutes() {
                     element={
                         <PrivateRoute>
                             <Dashboard />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/profile"
+                    element={
+                        <PrivateRoute>
+                        <Profile />
+                        </PrivateRoute>
+                    }
+                />
+
+                    <Route
+                    path="/admin/users"
+                    element={
+                        <PrivateRoute>
+                        <AdminUsers />
                         </PrivateRoute>
                     }
                 />
